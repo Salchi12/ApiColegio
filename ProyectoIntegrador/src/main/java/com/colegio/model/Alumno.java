@@ -4,12 +4,15 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +26,7 @@ public class Alumno {
 	
 	@Id
 	@Column
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idalumnos;
 	
 	@Column
@@ -34,9 +38,8 @@ public class Alumno {
 	@Column
 	private String direccion;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
-	private Date privatefechaNacimiento;
+	@DateTimeFormat(iso=ISO.DATE)
+	private Date fecha_nacimiento;
 	
 	private Integer morosos;
 
