@@ -20,7 +20,7 @@ import com.colegio.dao.AlumnoDao;
 import com.colegio.model.Alumno;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="*")
 @RequestMapping("/alumno")
 public class AlumnoController {
 	
@@ -30,7 +30,6 @@ public class AlumnoController {
 	@GetMapping("/listar")
 	public List<Alumno> listarAlumno (){
 		return alumnodao.findAll();
-		
 	}
 	
 	@GetMapping("/{id}")
@@ -62,7 +61,7 @@ public class AlumnoController {
 		
 	}
 	
-	@DeleteMapping("eleminar/{id}")
+	@DeleteMapping("eliminar/{id}")
 	public ResponseEntity<String> eliminarCliente(@PathVariable("id") Integer id) {
 		alumnodao.deleteById(id);
 		return ResponseEntity.status(HttpStatus.OK)
